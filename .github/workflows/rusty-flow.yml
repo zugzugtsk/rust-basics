@@ -27,6 +27,7 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
+      - name: MacOS
       - run: |
           pwd
           ls -hal
@@ -41,5 +42,4 @@ jobs:
         if: ${{ env.matrix.os == 'macos-latest' }}
         uses: actions/checkout@v2
       - run: |
-          echo "Hi! I'm Mac i i suck! :)"
-          cargo build --release
+          echo "Hi! I'm Mac :)"
