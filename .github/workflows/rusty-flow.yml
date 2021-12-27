@@ -15,7 +15,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-18.04]
+        os: [macos-latest, windows-latest, ubuntu-latest]
     name: build release version
     runs-on: ${{ matrix.os }}
     if: 
@@ -29,6 +29,8 @@ jobs:
           toolchain: stable
           override: true
       - run: |
+          pwd
+          ls -hal
           echo "Hi! I'm Linux agent!"
           cargo build --release
       - name: Windows
