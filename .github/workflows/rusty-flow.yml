@@ -22,24 +22,24 @@ jobs:
       - name: Linux
         if: ${{ env.matrix.os == 'ubuntu-latest' }}
         uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
       - name: MacOS
-      - run: |
+        run: |
           pwd
           ls -hal
           echo "Hi! I'm Linux agent!"
           cargo build
       - name: Windows
         if: ${{ env.matrix.os == 'Windows' }}
-      - run: |
+        run: |
           echo "Hi! I'm Windows agent!"
 
       - name: MacOS
         if: ${{ env.matrix.os == 'macos-latest' }}
         uses: actions/checkout@v2
-      - run: |
+        run: |
           echo "Hi! I'm Mac :)"
