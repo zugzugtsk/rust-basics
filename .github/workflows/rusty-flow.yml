@@ -21,7 +21,7 @@ jobs:
     if: 
     steps:
       - name: Linux
-        if: [ "$RUNNER_OS" == "Linux" ]
+        if: ${{ $env.RUNNER_OS == 'Linux' }}
         uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -32,7 +32,7 @@ jobs:
           echo "Hi! I'm Linux agent!"
           cargo build --release
       - name: Windows
-        if: [ "$RUNNER_OS" == "Windows" ]
+        if: ${{ $env.RUNNER_OS == 'Windows' }}
         uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -43,7 +43,7 @@ jobs:
           echo "Hi! I'm Windows agent!"
           cargo build --release
       - name: MacOS
-        if: [ "$RUNNER_OS" == "macOS" ]
+        if: ${{ $env.RUNNER_OS == 'macOS' }}
         uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
