@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Linux
-        if: ${{ runner.os == 'Ubuntu' }}
+        if: ${{ runner.os == 'Linux' }}
         run: echo "Hi! I'm Linux agent!"
       - name: Windows
         if: ${{ runner.os == 'Windows' }}
