@@ -21,13 +21,10 @@ jobs:
     steps:
       - name: Linux
         if: ${{ env.matrix.os == 'ubuntu-latest' }}
-          run: |
-            echo "Hi! I'm Linux agent!"
+        run: echo "Hi! I'm Linux agent!"
       - name: Windows
         if: ${{ env.matrix.os == 'windows-latest' }}
-          run: |
-            echo "Hi! I'm Windows agent!"
+        run: echo "Hi! I'm Windows agent!"
       - name: MacOS
         if: ${{ env.matrix.os == 'macos-latest' }}
-          run: |
-            echo "Hi! I'm Mac i i suck! :)"
+        run: echo "Hi! I'm Mac i i suck! :)"
