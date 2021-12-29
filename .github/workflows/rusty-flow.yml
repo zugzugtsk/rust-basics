@@ -19,15 +19,25 @@ jobs:
     name: build release version
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
       - name: Linux
         if: ${{ runner.os == 'Linux' }}
         run: |
           echo "Hi! I'm Linux agent!"
+          sudo apt-get install -y libudev-dev
+          cargo build --release
       - name: Windows
         if: ${{ runner.os == 'Windows' }}
         run: |
           echo "Hi! I'm Windows agent!"
+          cargo build --release
       - name: MacOS
         if: ${{ runner.os == 'macOS' }}
         run: |
           echo "Hi! I'm Mac i i suck! :)"
+          cargo build --release
