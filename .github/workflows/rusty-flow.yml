@@ -21,37 +21,14 @@ jobs:
     steps:
       - name: Linux
         if: ${{ env.matrix.os == 'ubuntu-latest' }}
-        uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - run: |
-          pwd
-          ls -hal
+        run: |
           echo "Hi! I'm Linux agent!"
-          cargo build --release
       - name: Windows
         if: ${{ env.matrix.os == 'windows-latest' }}
-        uses: actions/checkout@v2-hal
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - run: |
+        run: |
           echo "Hi! I'm Windows agent!"
-          cargo build --release
       - name: MacOS
         if: ${{ env.matrix.os == 'macos-latest' }}
-        uses: actions/checkout@v2
-  |
-          e uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - run: |
+        run: |
           echo "Hi! I'm Mac i i suck! :)"
           cargo build --release
