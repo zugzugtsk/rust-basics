@@ -35,7 +35,7 @@ jobs:
       - name: Windows
         if: ${{ env.matrix.os == 'windows-latest' }}
         uses: actions/checkout@v2-hal
-          - uses: actions-rs/toolchain@v1
+      - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
