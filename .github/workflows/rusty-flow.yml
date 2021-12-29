@@ -44,4 +44,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with: 
           name: package-${{github.run_number}}-${{runner.os}}
-          path: $APP_DIR
+          path: ${{env.APP_DIR}}
