@@ -41,3 +41,7 @@ jobs:
         run: |
           echo "Hi! I'm Mac i i suck! :)"
           cargo build --release
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: package-${{github.run_number}}-${{runner.os}}
+          path: $APP_DIR
