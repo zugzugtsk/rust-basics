@@ -1,0 +1,47 @@
+name: Rusty-build
+
+on:
+  push:
+    branches:
+      - main
+      - rust-flow
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  APP_DIR: ${{ github.workspace }}/target/release
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    name: build release version
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Linux
+        if: ${{ runner.os == 'Linux' }}
+        run: |
+          echo "Hi! I'm Linux agent!"
+          sudo apt-get install -y libudev-dev
+          cargo build --release
+      - name: Windows
+        if: ${{ runner.os == 'Windows' }}
+        run: |
+          echo "Hi! I'm Windows agent!"
+          cargo build --release
+      - name: MacOS
+        if: ${{ runner.os == 'macOS' }}
+        run: |
+          echo "Hi! I'm Mac i i suck! :)"
+          cargo build --release
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: package-${{github.run_number}}-${{runner.os}}
+          path: ${{env.APP_DIR}}
