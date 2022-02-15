@@ -5,20 +5,26 @@ on:
     inputs:
       name:
         type: choice
-        description: Who to greet
+        description: Win build
         options: 
-        - monalisa
-        - cschleiden
+        - not today...
+        - build & test
+        - build & test & publish artifact
       message:
         required: true
-      use-emoji:
+      name:
         type: boolean
-        description: Include 🎉🤣 emojis
+        description: Nix build
+      message:
+        required: true
 
 jobs:
-  greet:
+  set_options_vars:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
