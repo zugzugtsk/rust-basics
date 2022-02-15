@@ -10,13 +10,9 @@ on:
         - not
         - build&test
         - build&test&publish
-      message:
-        required: true
       name:
         type: boolean
         description: Nix build
-      message:
-        required: true
 
 jobs:
   set_options_vars:
