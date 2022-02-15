@@ -7,9 +7,9 @@ on:
         type: choice
         description: Win build
         options: 
-        - not today...
-        - build & test
-        - build & test & publish artifact
+        - not
+        - build&test
+        - build&test&publish
       message:
         required: true
       name:
