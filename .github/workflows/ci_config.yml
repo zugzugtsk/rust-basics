@@ -14,11 +14,9 @@ on:
         required: true
 
 jobs:
-  greet:
+  print_info:
     runs-on: ubuntu-latest
 
     steps:
     - name: DO smth
-      run: |
-        echo "Hi"
-        echo "${{ github.event.inputs.message }} ${{ fromJSON('github') }} ${{ github.event.inputs.name }}"
+      run: run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
