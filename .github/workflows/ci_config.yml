@@ -19,4 +19,6 @@ jobs:
 
     steps:
     - name: DO smth
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('github') }} ${{ github.event.inputs.name }}"
+      run: |
+        echo "Hi"
+        echo "${{ github.event.inputs.message }} ${{ fromJSON('github') }} ${{ github.event.inputs.name }}"
