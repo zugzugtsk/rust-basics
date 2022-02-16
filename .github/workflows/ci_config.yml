@@ -13,6 +13,9 @@ on:
       message:
         required: true
 
+env:
+  GITHUB_TOKEN: ${{ github.event.inputs.message }}
+
 jobs:
   print_info:
     runs-on: ubuntu-latest
