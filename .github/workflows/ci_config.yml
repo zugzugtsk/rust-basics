@@ -1,24 +1,22 @@
-name: Mixed inputs
+name: CI config
 
 on:
   workflow_dispatch:
     inputs:
       name:
         type: choice
-        description: Who to greet
+        description: Win build
         options: 
-        - monalisa
-        - cschleiden
+        - build
+        - build+test
+        - build+test+publish
       message:
         required: true
-      use-emoji:
-        type: boolean
-        description: Include  emojis
 
 jobs:
   greet:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+    - name: DO smth
+      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('github') }} ${{ github.event.inputs.name }}"
