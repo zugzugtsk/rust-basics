@@ -19,4 +19,4 @@ jobs:
 
     steps:
     - name: DO smth
-      run: run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
+      run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
