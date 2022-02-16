@@ -22,5 +22,5 @@ jobs:
       run: |
         echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
         # echo '${{ toJSON(github) }}'
-        echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
+        # echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
         echo '${{ toJSON(env) }}'
