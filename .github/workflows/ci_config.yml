@@ -14,7 +14,8 @@ on:
         required: true
 
 env:
-  GITHUB_TOKEN: ${{ github.event.inputs.message }}
+  WIN_CHOICE: ${{ github.event.inputs.name }}
+  MESSAGE: ${{ github.event.inputs.message }}
 
 jobs:
   print_info:
@@ -23,7 +24,7 @@ jobs:
     steps:
     - name: Print inputs & github context
       run: |
-        echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
-        echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
+        # echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
+        # echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
         echo '${{ toJSON(github) }}'
         echo '${{ toJSON(env) }}'
