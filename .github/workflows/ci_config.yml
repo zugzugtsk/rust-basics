@@ -18,5 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: DO smth
-      run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
+    - name: Print inputs & github context
+      run: |
+        echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
+        echo '${{ toJSON(github) }}'
