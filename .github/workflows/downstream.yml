@@ -14,5 +14,13 @@ jobs:
       run: |
         # echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
         # echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
-        echo '${{ toJSON(github) }}'
-        echo '${{ toJSON(env) }}'    
+        # echo '${{ toJSON(github) }}'
+        # echo '${{ toJSON(env) }}'
+    - id: get-value
+      uses: marcoslopes/git-notes-action@v1
+      with:
+          sha: ${{ github.sha }}
+  
+    - id: use-value
+      run: |
+          echo "value from note ${{ steps.get-value.outputs.message }}"

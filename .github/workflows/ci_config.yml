@@ -28,3 +28,13 @@ jobs:
         # echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
         echo '${{ toJSON(github) }}'
         echo '${{ toJSON(env) }}'
+    - name: checkout source
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - id: save-value
+      uses: marcoslopes/git-notes-action@v1
+      with:
+        sha: ${{ github.sha }}
+        message: "${{ env.WIN_CHOICE }}"
