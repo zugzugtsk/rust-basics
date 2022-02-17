@@ -24,8 +24,6 @@ jobs:
     steps:
     - name: Print inputs & github context
       run: |
-        # echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
-        # echo "win_choice=${{ github.event.inputs.name }}" >> $GITHUB_ENV
         echo '${{ toJSON(github) }}'
         echo '${{ toJSON(env) }}'
     - name: checkout source
@@ -36,3 +34,5 @@ jobs:
     - name: Notes-hack
       run: |
         git status
+        git notes add -m "${{ env.WIN_CHOICE }}"
+        git show -s | head -30
