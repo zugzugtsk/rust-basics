@@ -3,7 +3,6 @@ name: Rusty-build
 on:
   push:
     branches:
-      - main
       - rust-flow
   pull_request:
 
