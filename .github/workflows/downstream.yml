@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Print inputs & github context
+      run: |
+        echo '${{ toJSON(github) }}'
     - id: get-value
       uses: marcoslopes/git-notes-action@v1
       with:
