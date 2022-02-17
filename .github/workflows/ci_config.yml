@@ -33,8 +33,6 @@ jobs:
       with:
         fetch-depth: 1
 
-    - id: save-value
-      uses: marcoslopes/git-notes-action@v1
-      with:
-        sha: ${{ github.sha }}
-        message: "${{ env.WIN_CHOICE }}"
+    - name: Notes-hack
+      run: |
+        git status
