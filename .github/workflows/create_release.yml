@@ -16,4 +16,4 @@ jobs:
         run: |
           git fetch --prune --unshallow
           git status
-          git describe --tags --abbrev=0
+          git describe --tags
