@@ -30,7 +30,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
-
     - name: Notes-hack
       run: |
         git status
