@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set tag env
-        run: |
-          git log | head -20
+      - name: Get tag
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Print tag
+        run: echo ${{ steps.get_version.outputs.VERSION }}
