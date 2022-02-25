@@ -15,4 +15,4 @@ jobs:
       - name: Set tag env
         run: |
           git status
-          git describe --tags
+          git describe --tags --abbrev=0
