@@ -3,7 +3,7 @@ name: Rusty-build
 on:
   push:
     branches:
-      - main
+      - release
   pull_request:
 
 env:
