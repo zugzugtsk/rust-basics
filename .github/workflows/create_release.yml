@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Set tag env
         run: |
-          echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+          echo "RELEASE_VERSION=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           echo ${{ env.RELEASE_VERSION }}
           echo "Hi!"
       - name: Create Release
