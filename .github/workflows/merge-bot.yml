@@ -1,0 +1,20 @@
+name: Merge Bot
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - ready_for_review
+      - review_request_removed
+      - review_requested
+      - synchronize
+      - unlabeled
+  pull_request_review:
+    types:
+      - dismissed
+      - submitted
+
+jobs:
+  prcheck:
+    if: contains(github.event.pull_request.body, 'ready_to_merge')
+    run: echo "hi!"
