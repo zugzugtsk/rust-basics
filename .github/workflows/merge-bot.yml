@@ -22,4 +22,4 @@ jobs:
     if: contains(github.event.pull_request.body, 'ready_to_merge')
     steps:
       - name: flag reaction
-        run: echo "hi!"
+        run: echo "hello!"
