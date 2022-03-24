@@ -19,7 +19,7 @@ on:
 jobs:
   prcheck:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.body, 'ready_to_merge')
+    # if: contains(github.event.pull_request.body, 'ready_to_merge')
     steps:
       - name: flag reaction
         run: echo "hello!"
