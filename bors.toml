@@ -1,3 +1,2 @@
 status = [ "Rusty-build" ]
 delete_merged_branches = true
-required_approvals = 0
