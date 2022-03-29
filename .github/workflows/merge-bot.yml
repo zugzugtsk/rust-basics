@@ -5,21 +5,30 @@ on:
     types:
       - labeled
       - ready_for_review
-      - review_request_removed
       - review_requested
       - synchronize
-      - unlabeled
       - edited
       - opened
   pull_request_review:
     types:
-      - dismissed
+      - edited
       - submitted
 
 jobs:
   prcheck:
     runs-on: ubuntu-latest
-    # if: contains(github.event.pull_request.body, 'ready_to_merge')
+    if: contains(github.event.pull_request.body, 'ready_to_merge')
     steps:
       - name: flag reaction
-        run: echo "hello!"
+        run: echo "${{ github.event.pull_request.body }}"
+      - name: Integration check
+        uses: squalrus/merge-bot@v0.1.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          test: false
+          reviewers: false
+          labels: ready to merge
+          blocking_labels: do not merge
+          checks_enabled: true
+          method: merge
+          delete_source_branch: true

@@ -1,9 +1,9 @@
 name: Win Build
 
 on:
-  workflow_run:
-    workflows: [Rusty-build]
-    types: completed
+  push:
+    branches:
+      - brrrranch
 
 jobs:
   print_info:
