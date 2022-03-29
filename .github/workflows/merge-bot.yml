@@ -4,23 +4,35 @@ on:
   pull_request:
     types:
       - labeled
-      - ready_for_review
-      - review_requested
-      - synchronize
-      - edited
-      - opened
-  pull_request_review:
-    types:
-      - edited
-      - submitted
+
+env:
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
 jobs:
   prcheck:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.body, 'ready_to_merge')
     steps:
-      - name: flag reaction
-        run: echo "${{ github.event.pull_request.body }}"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Merge master to PR source locally
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+          git status
+          git pull
+          git checkout "$DEFAULT_BRANCH"
+          git status
+          git checkout "$GITHUB_HEAD_REF"
+          git merge "$DEFAULT_BRANCH" --no-edit
+          git status
       - name: Integration check
         uses: squalrus/merge-bot@v0.1.0
         with:
