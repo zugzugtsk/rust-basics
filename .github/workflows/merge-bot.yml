@@ -36,6 +36,7 @@ jobs:
           override: true
       - run: cargo test --release
   merge_bot:
+    runs-on: ubuntu-latest
     needs: local_merge
     steps:
       - name: Merge bot
