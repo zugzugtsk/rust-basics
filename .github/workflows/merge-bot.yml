@@ -35,6 +35,9 @@ jobs:
           toolchain: stable
           override: true
       - run: cargo test --release
+  merge_bot:
+    needs: local_merge
+    steps:
       - name: Merge bot
         uses: squalrus/merge-bot@v0.1.0
         with:
@@ -46,3 +49,8 @@ jobs:
           checks_enabled: false
           method: merge
           delete_source_branch: true
+      - name: Remove label
+        if: always()
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: ready to merge
